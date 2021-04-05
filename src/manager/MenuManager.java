@@ -15,7 +15,7 @@ public class MenuManager {
 
 		
 		int num = 0;
-		while (num!=6) {
+		while (num!=5) {
 			System.out.println("★★★ MoneyManagement System Menu ★★★");
 			System.out.println("1. 내역 등록(Add money)");
 			System.out.println("2. 내역 편집(Edit money)");
