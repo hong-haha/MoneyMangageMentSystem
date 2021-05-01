@@ -79,12 +79,25 @@ public class Money {
 
 	public Money(){
 	}
+	
+	public Money(Familymoney family){
+		this.family=family;
+	}
 
 	public Money( int[] amount, int kind) {
 		this.amount = amount;
 
 	}
+
+
 	public Money(String detail, int[] amount, int date , int kind) {
+		this.detail = detail;
+		this.amount = amount;
+		this.date = date;
+		this.kind = kind;
+	}
+	public Money(Familymoney family ,String detail, int[] amount, int date , int kind) {
+		this.family = family;
 		this.detail = detail;
 		this.amount = amount;
 		this.date = date;
@@ -92,8 +105,21 @@ public class Money {
 	}
 
 	public void printInfo(){
+		String sfamily ="none";
+		switch(this.family) {
+		case father:
+			sfamily ="father";
+			break;
+		case mother:
+			sfamily ="mother";
+			break;
+		case sister:
+			sfamily ="sister";
+			break;
+		default:
+		}
 		for(int i=0; i<amount.length;i++) {
-		System.out.println("detail:"+ detail + "amount:" + amount[i] + "date: " + date +" totalmoney :" + totalMoney );
+			System.out.println(sfamily+ "'s money"+  "detail:"+ detail + "amount:" + amount[i] + "date: " + date +" totalmoney :" + totalMoney );
 		}
 	}
 	public void getUserInput(Scanner input) {

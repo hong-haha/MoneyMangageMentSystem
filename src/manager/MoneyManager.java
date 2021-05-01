@@ -3,8 +3,10 @@ package manager;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import money.Familymoney;
 import money.Father;
 import money.Money;
+import money.Sister;
 
 public class MoneyManager {
 	ArrayList<Money> moneys = new ArrayList<Money>();
@@ -23,7 +25,7 @@ public class MoneyManager {
 			System.out.print("3 for Sister ");
 			who = input.nextInt();
 			if(who==1) {
-				money = new Father();
+				money = new Father(Familymoney.father);
 				moneys.add(money);
 				money.getUserInput(input);
 				break;
@@ -34,8 +36,14 @@ public class MoneyManager {
 				money.getUserInput(input);
 				break;
 			}
+			else if(who==3) {
+				money = new Sister(Familymoney.sister);
+				moneys.add(money);
+				money.getUserInput(input);
+				break;
+			}
 			else {
-
+				System.out.print("Wrong Number Select 1~3");
 			}
 		}
 
@@ -48,21 +56,32 @@ public class MoneyManager {
 			Money money = moneys.get(i);
 			if(money.getDate() == date) {
 				int num =-1;
-				while (num != 4) {
+				int num2 =0;
+				while (num != 3) {
 					showEditMenu();
 					num = input.nextInt();
 					switch(num) {
+
 					case 1:
-						
-						
+						System.out.print("Edit your Date");
+						num2 = input.nextInt();
+						money.setDate(num2);
 						break;
 					case 2:
-						money.setDate(num);
+						System.out.print("Edit your money kind (1 or 2)");
+						num2 = input.nextInt();
+						money.setKind(num2);
 						break;
-					case 3:
-						int kind;
-						money.setKind(num);
-						break;
+//					case 3:
+//						System.out.print("Edit your Money");
+//						num2 = input.nextInt();
+//						int index = -1;
+//						
+//						
+//						money.setAmount(i);
+//
+//
+//						break;	
 					default:
 						continue;
 					}
@@ -105,11 +124,13 @@ public class MoneyManager {
 	}	
 	public void showEditMenu() {
 		System.out.println("¡Ú¡Ú¡Ú Money Info Edit Menu ¡Ú¡Ú¡Ú");
-		System.out.println(" 1. Edit amount");
-		System.out.println(" 2. Edit date");
-		System.out.println(" 3. Edit kind");
-		System.out.println(" 4. Exit");
-		System.out.println("Select one number between 1 - 4:");
+		
+		System.out.println(" 1. Edit date");
+		System.out.println(" 2. Edit kind");
+//		System.out.println(" 3. Edit amount");
+		System.out.println(" 3. Exit");
+		
+		System.out.println("Select one number between 1 - 3:");
 	}
 
 
