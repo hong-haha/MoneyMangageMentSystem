@@ -2,11 +2,12 @@ package money;
 
 import java.util.Scanner;
 
-public class Father extends Money implements  MoneyInput{
+public class Mother extends Money implements  MoneyInput{
 	
-	public Father(Familymoney family){
+	public Mother(Familymoney family){
 		super(family);
 	}
+
 	public void getUserInput(Scanner input) {
 		for(int i=0; i<max; i++) {
 			System.out.print("Amount of money: ");
@@ -30,24 +31,9 @@ public class Father extends Money implements  MoneyInput{
 				totalMoney -= outMoney[i];
 			}
 
-			char answer = 'x';
-			while(answer != 'y' && answer != 'Y'&& answer != 'n' && answer != 'N' ) {
-				System.out.print("Do you want to write down the details?  (Y/N) ");
-				answer = input.next().charAt(0);
-				if(answer =='y' || answer =='Y') {
-					System.out.print("Details of money: ");
-					String detail = input.next();
-					this.setDetail(detail);
-					break;
-				}
-				else if(answer =='n' || answer =='N') {
-					this.setDetail("");
-					break;
-				}
-				else {
-				}
-			}
-
+			System.out.print("Details of money: ");
+			String detail = input.next();
+			this.setDetail(detail);
 		}
 	}
 	public void printInfo(){

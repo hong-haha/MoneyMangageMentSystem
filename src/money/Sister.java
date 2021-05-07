@@ -2,7 +2,7 @@ package money;
 
 import java.util.Scanner;
 
-public class Sister extends Money {
+public class Sister extends Money implements  MoneyInput{
 	
 	public Sister(Familymoney family){
 		super(family);
@@ -37,4 +37,23 @@ public class Sister extends Money {
 
 		}
 	}
+	public void printInfo(){
+		String sfamily ="none";
+		switch(this.family) {
+		case father:
+			sfamily ="father";
+			break;
+		case mother:
+			sfamily ="mother";
+			break;
+		case sister:
+			sfamily ="sister";
+			break;
+		default:
+		}
+		for(int i=0; i<amount.length;i++) {
+			System.out.println(sfamily+ "'s money"+  "detail:"+ detail + "amount:" + amount[i] + "date: " + date +" totalmoney :" + totalMoney );
+		}
+	}
+	
 }

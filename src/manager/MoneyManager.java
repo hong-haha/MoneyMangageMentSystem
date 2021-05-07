@@ -6,10 +6,12 @@ import java.util.Scanner;
 import money.Familymoney;
 import money.Father;
 import money.Money;
+import money.MoneyInput;
+import money.Mother;
 import money.Sister;
 
 public class MoneyManager {
-	ArrayList<Money> moneys = new ArrayList<Money>();
+	ArrayList<MoneyInput> moneys = new ArrayList<MoneyInput>();
 	Scanner input;
 	MoneyManager(Scanner input){
 		this.input = input;
@@ -17,7 +19,7 @@ public class MoneyManager {
 
 	public void addmoney() {
 		int who=0;
-		Money money;
+		MoneyInput moneyinput;
 		while (who !=1 && who !=2) {
 			System.out.print("Select  num for Whose Money ");
 			System.out.print("1 for Father ");
@@ -25,21 +27,21 @@ public class MoneyManager {
 			System.out.print("3 for Sister ");
 			who = input.nextInt();
 			if(who==1) {
-				money = new Father(Familymoney.father);
-				moneys.add(money);
-				money.getUserInput(input);
+				moneyinput = new Father(Familymoney.father);
+				moneys.add(moneyinput);
+				moneyinput.getUserInput(input);
 				break;
 			}
 			else if(who==2) {
-				money = new Money();
-				moneys.add(money);
-				money.getUserInput(input);
+				moneyinput = new Mother(Familymoney.mother);
+				moneys.add(moneyinput);
+				moneyinput.getUserInput(input);
 				break;
 			}
 			else if(who==3) {
-				money = new Sister(Familymoney.sister);
-				moneys.add(money);
-				money.getUserInput(input);
+				moneyinput = new Sister(Familymoney.sister);
+				moneys.add(moneyinput);
+				moneyinput.getUserInput(input);
 				break;
 			}
 			else {
@@ -53,8 +55,8 @@ public class MoneyManager {
 		System.out.print("When will you edit the date? ");
 		int date= input.nextInt();
 		for(int i=0; i<moneys.size();i++) {
-			Money money = moneys.get(i);
-			if(money.getDate() == date) {
+			MoneyInput moneyinput = moneys.get(i);
+			if(moneyinput.getDate() == date) {
 				int num =-1;
 				int num2 =0;
 				while (num != 3) {
@@ -65,12 +67,12 @@ public class MoneyManager {
 					case 1:
 						System.out.print("Edit your Date");
 						num2 = input.nextInt();
-						money.setDate(num2);
+						moneyinput.setDate(num2);
 						break;
 					case 2:
 						System.out.print("Edit your money kind (1 or 2)");
 						num2 = input.nextInt();
-						money.setKind(num2);
+						moneyinput.setKind(num2);
 						break;
 //					case 3:
 //						System.out.print("Edit your Money");
