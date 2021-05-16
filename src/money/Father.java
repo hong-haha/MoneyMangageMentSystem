@@ -7,16 +7,21 @@ public class Father extends Money implements  MoneyInput{
 	public Father(Familymoney family){
 		super(family);
 	}
+	
+	public void setmoneydate(MoneyInput money, Scanner input) {
+		System.out.print("Date of money(yyyymmdd): ");
+		int date = input.nextInt();
+		this.setDate(date);
+
+	}
 	public void getUserInput(Scanner input) {
 		for(int i=0; i<max; i++) {
 			System.out.print("Amount of money: ");
 			amount[i]= input.nextInt();
 			this.setAmount(amount);
 
-			System.out.print("Date of money(yyyymmdd): ");
-			int date = input.nextInt();
-			this.setDate(date);
-
+			setmoneydate(this,input);
+			
 			System.out.print("수입: 1번입력 / 지출: 2번입력");
 			int kind= input.nextInt();
 			this.setKind(kind);
@@ -51,6 +56,12 @@ public class Father extends Money implements  MoneyInput{
 		}
 	}
 	public void printInfo(){
+		String sfamily= getfamilyString();
+		for(int i=0; i<amount.length;i++) {
+			System.out.println(sfamily+ "'s money"+  "detail:"+ detail + "amount:" + amount[i] + "date: " + date +" totalmoney :" + totalMoney );
+		}
+	}
+	public String getfamilyString() {
 		String sfamily ="none";
 		switch(this.family) {
 		case father:
@@ -64,9 +75,7 @@ public class Father extends Money implements  MoneyInput{
 			break;
 		default:
 		}
-		for(int i=0; i<amount.length;i++) {
-			System.out.println(sfamily+ "'s money"+  "detail:"+ detail + "amount:" + amount[i] + "date: " + date +" totalmoney :" + totalMoney );
-		}
+		return sfamily;
+		
 	}
-	
 }

@@ -1,6 +1,7 @@
 package manager;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import money.Familymoney;
@@ -20,7 +21,8 @@ public class MoneyManager {
 	public void addmoney() {
 		int who=0;
 		MoneyInput moneyinput;
-		while (who !=1 && who !=2) {
+		while (who <1 || who >3) {
+			try {
 			System.out.print("Select  num for Whose Money ");
 			System.out.print("1 for Father ");
 			System.out.print("2 for Mother ");
@@ -45,7 +47,17 @@ public class MoneyManager {
 				break;
 			}
 			else {
-				System.out.print("Wrong Number Select 1~3");
+				System.out.println("Wrong Number Select 1~3");
+			}
+			}
+			catch(InputMismatchException e) {
+				System.out.println("1에서 3까지 숫자를 입력하시오");
+				if(input.hasNext()) {
+					input.next();
+				}
+				who = -1;
+
+				
 			}
 		}
 
@@ -102,7 +114,6 @@ public class MoneyManager {
 			if(moneys.get(i).getDate() == date) { 
 				index = i;
 				break;
-
 			}
 		}
 		if (index >=0) {
@@ -118,8 +129,6 @@ public class MoneyManager {
 
 
 	public void viewall() {
-		//		System.out.print("Money date:");
-		//		int date =input.nextInt();
 		for(int i=0; i<moneys.size();i++) {
 			moneys.get(i).printInfo();
 		}			

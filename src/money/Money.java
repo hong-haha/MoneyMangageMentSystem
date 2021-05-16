@@ -66,6 +66,7 @@ public abstract class Money {
 	}
 
 	public void setDate(int date) {
+	
 		this.date = date;
 	}
 
