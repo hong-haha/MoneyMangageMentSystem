@@ -1,19 +1,26 @@
 package manager;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import log.EventLogger;
 import money.Familymoney;
 import money.Father;
-import money.Money;
 import money.MoneyInput;
 import money.Mother;
 import money.Sister;
 
-public class MoneyManager {
+public class MoneyManager implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4188544308666252816L;
+	
 	ArrayList<MoneyInput> moneys = new ArrayList<MoneyInput>();
-	Scanner input;
+	transient Scanner input;
+	static EventLogger logger = new EventLogger("log.txt");
 	MoneyManager(Scanner input){
 		this.input = input;
 	}
@@ -32,18 +39,22 @@ public class MoneyManager {
 				moneyinput = new Father(Familymoney.father);
 				moneys.add(moneyinput);
 				moneyinput.getUserInput(input);
+				logger.log("father money");
 				break;
+				
 			}
 			else if(who==2) {
 				moneyinput = new Mother(Familymoney.mother);
 				moneys.add(moneyinput);
 				moneyinput.getUserInput(input);
+				logger.log("mother money");
 				break;
 			}
 			else if(who==3) {
 				moneyinput = new Sister(Familymoney.sister);
 				moneys.add(moneyinput);
 				moneyinput.getUserInput(input);
+				logger.log("sister money");
 				break;
 			}
 			else {

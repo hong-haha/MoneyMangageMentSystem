@@ -1,8 +1,15 @@
 package money;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public abstract class Money {
+public abstract class Money implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6157394702339910427L;
+	
+	
 	int max=2;
 	protected Familymoney family = Familymoney.father; 
 	protected String detail;
