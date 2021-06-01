@@ -8,6 +8,7 @@ import java.util.Scanner;
 import log.EventLogger;
 import money.Familymoney;
 import money.Father;
+import money.Money;
 import money.MoneyInput;
 import money.Mother;
 import money.Sister;
@@ -144,6 +145,14 @@ public class MoneyManager implements Serializable{
 			moneys.get(i).printInfo();
 		}			
 	}	
+	public int size() {
+		return moneys.size();
+	
+	}
+	public MoneyInput get(int index) {
+		return (MoneyInput) moneys.get(index);
+	
+	}
 	public void showEditMenu() {
 		System.out.println("¡Ú¡Ú¡Ú Money Info Edit Menu ¡Ú¡Ú¡Ú");
 		

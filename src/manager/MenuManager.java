@@ -2,6 +2,7 @@ package manager;
 
 import java.util.Scanner;
 
+import gui.WindowFrame;
 import log.EventLogger;
 
 import java.io.FileInputStream;
@@ -26,6 +27,7 @@ public class MenuManager {
 		if(moneyManager ==null) {
 			 moneyManager =new MoneyManager(input);
 		}
+		WindowFrame frame = new WindowFrame(moneyManager);
 		selectMenu(input, moneyManager);
 		putObject(moneyManager,"moneymanager.ser");
 	}	
@@ -73,7 +75,7 @@ public class MenuManager {
 		System.out.println("3. 삭제(Delete money)");
 		System.out.println("4. 전체내용보기(View all)");
 		System.out.println("5. 나가기(Exit) ");
-		System.out.print("Select one number between 1 - 6: ");
+		System.out.print("Select one number between 1 - 5: ");
 	}
 	public static MoneyManager getObject(String filename) {
 		MoneyManager moneyManager =null;
