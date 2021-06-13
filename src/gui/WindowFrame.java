@@ -19,7 +19,7 @@ public class WindowFrame extends JFrame{
 		
 		this.moneyManager = moneyManager;
 		this.menuselection = new MenuSelection(this);
-		this.moneyadder = new MoneyAdder(this);
+		this.moneyadder = new MoneyAdder(this,this.moneyManager);
 		this.moneyviewer = new MoneyViewer(this,this.moneyManager);	
 		
 

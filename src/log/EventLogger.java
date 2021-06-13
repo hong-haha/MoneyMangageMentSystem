@@ -23,7 +23,7 @@ public class EventLogger {
 			logger.addHandler(filehandler);
 			filehandler.setFormatter(new SimpleFormatter());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 	}

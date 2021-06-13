@@ -17,6 +17,38 @@ public class MoneyViewer extends JPanel{
 	MoneyManager moneyManager;
 	
 	
+	public MoneyManager getMoneyManager() {
+		return moneyManager;
+	}
+
+
+	public void setMoneyManager(MoneyManager moneyManager) {
+		this.moneyManager = moneyManager;
+		this.removeAll();
+		
+		DefaultTableModel model = new DefaultTableModel();
+		model.addColumn("Amount");
+		model.addColumn("Date");
+		model.addColumn("Detail");
+
+		for(int i =0;i<moneyManager.size();i++) {
+			Vector row = new Vector();
+			MoneyInput mi= moneyManager.get(i);
+			row.add(mi.getTotalMoney());
+			row.add(mi.getDate());
+			row.add(mi.getDetail());
+			row.add(mi.getKind());
+			model.addRow(row);
+		}
+		
+		JTable table = new JTable(model);
+		JScrollPane sp = new JScrollPane(table);
+		
+		this.add(sp);
+		
+	}
+
+
 	public MoneyViewer(WindowFrame frame,MoneyManager moneyManager) {
 		this.frame = frame;
 		this.moneyManager = moneyManager;
@@ -42,6 +74,7 @@ public class MoneyViewer extends JPanel{
 		JScrollPane sp = new JScrollPane(table);
 		
 		this.add(sp);
+		
 		
 		
 	}

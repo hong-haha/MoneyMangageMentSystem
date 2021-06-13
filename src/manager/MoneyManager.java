@@ -25,6 +25,18 @@ public class MoneyManager implements Serializable{
 	MoneyManager(Scanner input){
 		this.input = input;
 	}
+	
+	public void addmoney(String money,String date , String detail) {
+		MoneyInput moneyinput = new Father(Familymoney.father);
+		moneys.add(moneyinput);
+		moneyinput.getUserInput(input);
+	}
+	public void addmoney(MoneyInput moneyinput) {
+		
+		moneys.add(moneyinput);
+		
+	}
+	
 
 	public void addmoney() {
 		int who=0;

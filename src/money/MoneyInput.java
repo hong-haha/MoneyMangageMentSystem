@@ -21,8 +21,9 @@ public interface MoneyInput {
 	
 	public int getTotalMoney();
 	
-	
-	
+	public void setTotalMoney(int totalMoney) ;
+		
+	public void setDetail(String detail);
 	public void printInfo();
 	
 	public void getUserInput(Scanner input);

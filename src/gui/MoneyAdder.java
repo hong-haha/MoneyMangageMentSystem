@@ -7,11 +7,18 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
-public class MoneyAdder extends JPanel{
+import listener.MoneyAdderCancel;
+import listener.MoneyAdderListener;
+import manager.MoneyManager;
+
+public class MoneyAdder extends JPanel{	
 	WindowFrame frame;
+	MoneyManager moneyManager;
 	
-	public MoneyAdder(WindowFrame frame) {
+	
+	public MoneyAdder(WindowFrame frame,MoneyManager moneyManager) {
 		this.frame = frame;
+		this.moneyManager=moneyManager;
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(new SpringLayout());
@@ -25,6 +32,9 @@ public class MoneyAdder extends JPanel{
 		JLabel labeldate = new JLabel("Date:",JLabel.TRAILING);
 		JTextField fielddate = new JTextField(10);
 		labeldate.setLabelFor(fielddate);
+		
+		
+		
 		panel.add(labeldate);
 		panel.add(fielddate);
 		
@@ -34,8 +44,12 @@ public class MoneyAdder extends JPanel{
 		panel.add(labeldetail);
 		panel.add(fielddetail);
 		
-		panel.add(new JButton("SAVE"));
-		panel.add(new JButton("CANCEL"));
+		JButton saveButton =new JButton("SAVE");
+		saveButton.addActionListener(new MoneyAdderListener(fieldmoney,fielddate,fielddetail,moneyManager));		
+		JButton cancelButton =new JButton("CANCEL");
+		cancelButton.addActionListener(new MoneyAdderCancel(frame));
+		panel.add(saveButton);
+		panel.add(cancelButton);
 		
 		
 		
